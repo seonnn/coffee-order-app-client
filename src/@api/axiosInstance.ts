@@ -10,3 +10,8 @@ api_.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
+
+api_.interceptors.response.use((response) => {
+  handleAxiosDates(response.data);
+  return response;
+});
